@@ -1,53 +1,42 @@
-# Nombre del Proyecto
+# Api devshop
 
 Descripción concisa del proyecto.
 
-## Tabla de Contenidos
+## Inicializar el Proyecto
 
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Contribución](#contribución)
-- [Licencia](#licencia)
+Para comenzar un nuevo proyecto Node.js, ejecuta el siguiente comando para generar un archivo `package.json` con la configuración predeterminada:
 
-## Instalación
+```bash
+npm init -y
+```
 
-Para comenzar a trabajar con este proyecto, sigue estos pasos:
+## Instalar Dependencias de Desarrollo
 
-1. **Clonar el repositorio:**
-   ```bash
-   git clone https://github.com/tu_usuario/tu_proyecto.git
-   cd tu_proyecto
-   ```
+Estas dependencias son útiles durante el desarrollo de aplicaciones Node.js, permitiendo la compilación de código moderno, registro HTTP y reinicio automático del servidor.
 
-2. **Instalar dependencias:**
-   ```bash
-   npm install
-   ```
-   Esto instalará todas las dependencias necesarias para ejecutar el proyecto.
+```bash
+npm i @babel/cli @babel/core @babel/node @babel/preset-env morgan nodemon -D
+```
 
-3. **Configurar variables de entorno:**
-   Copia el archivo `.env.example` y renómbralo a `.env`. Luego, edita el archivo `.env` y proporciona los valores necesarios para tus variables de entorno.
+- **@babel/cli:** Interfaz de línea de comandos para Babel.
+- **@babel/core:** Núcleo de Babel para compilar código ECMAScript.
+- **@babel/node:** Permite ejecutar archivos de Node.js con soporte para transformación de Babel en tiempo de ejecución.
+- **@babel/preset-env:** Preset de Babel para compilar automáticamente código a una versión compatible con navegadores y entornos Node.js.
+- **morgan:** Middleware de registro HTTP para Node.js que registra detalles de solicitudes HTTP.
+- **nodemon:** Herramienta que reinicia automáticamente el servidor Node.js cuando detecta cambios en los archivos.
 
-4. **Iniciar el servidor:**
-   ```bash
-   npm start
-   ```
-   Esto iniciará el servidor y lo hará accesible en http://localhost:3000 por defecto.
+## Conexión con MySQL y Express
 
-## Uso
+Para conectar tu proyecto con MySQL y Express, instala las siguientes dependencias:
 
-Describe cómo utilizar el proyecto. Proporciona ejemplos de código o capturas de pantalla si es necesario.
+```bash
+npm i dotenv express promise-mysql
+```
 
-## Contribución
-
-¡Gracias por considerar contribuir a este proyecto! Si deseas contribuir, sigue estos pasos:
-
-1. Haz un fork del repositorio.
-2. Crea una nueva rama para tus cambios: `git checkout -b nueva-caracteristica`.
-3. Realiza tus cambios y haz commit: `git commit -am "Agrega nueva característica"`.
-4. Haz un push de tus cambios: `git push origin nueva-caracteristica`.
-5. Abre un Pull Request en GitHub.
+- **dotenv:** Carga variables de entorno desde un archivo .env en process.env.
+- **express:** Framework de aplicaciones web para Node.js.
+- **promise-mysql:** Adaptador para MySQL que utiliza promesas en lugar de devoluciones de llamada.
 
 ## Licencia
 
-[Nombre de la Licencia](#) © [Jroque]
+[Licencia](#) © [Jroque]
