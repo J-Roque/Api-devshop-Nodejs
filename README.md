@@ -2,7 +2,7 @@
 
 Descripción concisa del proyecto.
 
-## Inicializar el Proyecto
+## Inicializar el Proyectos
 
 Para comenzar un nuevo proyecto Node.js, ejecuta el siguiente comando para generar un archivo `package.json` con la configuración predeterminada:
 
