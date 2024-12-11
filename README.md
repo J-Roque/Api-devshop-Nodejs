@@ -36,7 +36,7 @@ npm i dotenv express promise-mysql
 - **dotenv:** Carga variables de entorno desde un archivo .env en process.env.
 - **express:** Framework de aplicaciones web para Node.js.
 - **promise-mysql:** Adaptador para MySQL que utiliza promesas en lugar de devoluciones de llamada.
-
+## Validar Json para ejecutar proyecto
 ## Licencia
 
 [Licencia](#) © [Jroque]
