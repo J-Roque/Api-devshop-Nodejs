@@ -2,7 +2,7 @@
 
 Descripción concisa del proyecto.
 
-## Inicializar el Proyecto
+## Inicializar el Proyectos
 
 Para comenzar un nuevo proyecto Node.js, ejecuta el siguiente comando para generar un archivo `package.json` con la configuración predeterminada:
 
@@ -36,7 +36,7 @@ npm i dotenv express promise-mysql
 - **dotenv:** Carga variables de entorno desde un archivo .env en process.env.
 - **express:** Framework de aplicaciones web para Node.js.
 - **promise-mysql:** Adaptador para MySQL que utiliza promesas en lugar de devoluciones de llamada.
-
+## Validar Json para ejecutar proyecto
 ## Licencia
 
 [Licencia](#) © [Jroque]
