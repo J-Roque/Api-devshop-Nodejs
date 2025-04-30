@@ -53,7 +53,6 @@ const getProducts = async (req, res) => {
     res.status(500).send("Error al obtener los productos");
   }
 };
-
 const getProduct = async (req, res) => {
   try {
     const { coleccion, tipo_prod } = req.params;
@@ -126,10 +125,10 @@ const getcollectionProdInfo = async (req, res) => {
 };
 
 module.exports = {
-  getProductLenguage,
   getProducts,
+  getProductLenguage,
   getcollection,
   getProduct,
   getcollectionProd,
-  getcollectionProdInfo
+  getcollectionProdInfo,
 };

@@ -1,21 +1,19 @@
-const express = require("express");
-const morgan = require("morgan");
-const cors = require("cors");
+// src/app.js
+const express = require('express');
+const morgan  = require('morgan');
+const cors    = require('cors');
+require('dotenv').config();    // carga .env
 
-// Routes
-const productRoutes = require("./routes/products.routes");
+const productRoutes = require('./routes/products.routes');
 
 const app = express();
 
-// Configuraciones
-app.set("port", 4000);
+app.set('port', process.env.PORT || 4000);
 
-// Middlewares
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors());
 
-// Rutas
-app.use("/api/products", productRoutes);
+app.use('/api/products', productRoutes);
 
 module.exports = app;

@@ -1,27 +1,15 @@
-const mysql = require("promise-mysql");
-const config = require("../config");
+// src/database/database.js
+const mysql  = require('promise-mysql');
+const config = require('../config');
 
-let pool;
-
-mysql.createPool({
-  host: config.host,
+const pool = mysql.createPool({
+  host:     config.host,
   database: config.database,
-  user: config.user,
+  user:     config.user,
   password: config.password,
-  connectionLimit: 10, // opcional
-}).then(p => {
-  pool = p;
-}).catch(err => {
-  console.error("Error al crear el pool de conexión:", err);
+  connectionLimit: 10
 });
 
-const getConnection = () => {
-  if (!pool) {
-    throw new Error("La conexión aún no está disponible.");
-  }
-  return pool;
-};
+const getConnection = () => pool;
 
-module.exports = {
-  getConnection
-};
+module.exports = { getConnection };
