@@ -1,4 +1,4 @@
-import app from "./app.js"; // ← Añade .js aquí
+import app from './app.js';
 
 const main = () => {
   app.listen(app.get("port"));

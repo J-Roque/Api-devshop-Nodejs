@@ -1,19 +1,21 @@
-import  express  from "express";
-import morgan from "morgan";
-//Routes
-import productRoutes from "./routes/products.routes"
-import cors from 'cors';
+const express = require("express");
+const morgan = require("morgan");
+const cors = require("cors");
 
-const app= express();
-//configuraciones
-app.set("port",4000);
-//Middlewares
+// Routes
+const productRoutes = require("./routes/products.routes");
+
+const app = express();
+
+// Configuraciones
+app.set("port", 4000);
+
+// Middlewares
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
-//Rputes
-app.use("/api/products",productRoutes);
 
-export default app;
+// Rutas
+app.use("/api/products", productRoutes);
 
-
+module.exports = app;

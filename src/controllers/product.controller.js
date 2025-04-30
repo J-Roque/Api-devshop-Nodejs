@@ -1,4 +1,4 @@
-import { getConnection } from "./../database/database";
+const { getConnection } = require("../database/database");
 
 // Función para formatear los resultados
 const formatResults = (result) => {
@@ -20,18 +20,16 @@ const formatResults = (result) => {
 const getProductLenguage = async (req, res) => {
   try {
     const { lenguage } = req.params;
-    const connection = await getConnection();
+    const connection = await getConnection(); // Conéctate a la base de datos
     const result = await connection.query(
-      "SELECT " +
-          "a.id_prod, a.nombre_prod, a.precio, a.cod_coleccion, a.thema_imagen, a.collecion, " +
-          "b.arte, a.tipo_prod, b.color, b.talla, b.descripcion " +
-      "FROM product a " +
-      "INNER JOIN producto_detalle b ON a.id_prod = b.id_prod " +
-      "WHERE a.collecion = ?", [lenguage]
+      "SELECT a.id_prod, a.nombre_prod, a.precio, a.cod_coleccion, a.thema_imagen, a.collecion, " +
+      "b.arte, a.tipo_prod, b.color, b.talla, b.descripcion " +
+      "FROM product a INNER JOIN producto_detalle b ON a.id_prod = b.id_prod WHERE a.collecion = ?", 
+      [lenguage]
     );
 
     const formattedResults = formatResults(result);
-    res.json(formattedResults);
+    res.json(formattedResults); // Responde con los datos formateados
   } catch (error) {
     console.error("Error al obtener los productos:", error);
     res.status(500).send("Error al obtener los productos");
@@ -61,12 +59,9 @@ const getProduct = async (req, res) => {
     const { coleccion, tipo_prod } = req.params;
     const connection = await getConnection();
     const result = await connection.query(
-      "SELECT " +
-      "a.id_prod, a.nombre_prod, a.precio, a.cod_coleccion, a.thema_imagen, a.collecion, " +
+      "SELECT a.id_prod, a.nombre_prod, a.precio, a.cod_coleccion, a.thema_imagen, a.collecion, " +
       "b.arte, a.tipo_prod, b.color, b.talla, b.descripcion " +
-      "FROM product a " +
-      "INNER JOIN producto_detalle b ON a.id_prod = b.id_prod " +
-      "WHERE a.collecion = ? AND a.tipo_prod = ? LIMIT 1",
+      "FROM product a INNER JOIN producto_detalle b ON a.id_prod = b.id_prod WHERE a.collecion = ? AND a.tipo_prod = ? LIMIT 1",
       [coleccion, tipo_prod]
     );
 
@@ -94,7 +89,8 @@ const getcollectionProd = async (req, res) => {
     const { prod } = req.params;
     const connection = await getConnection();
     const result = await connection.query(
-      "SELECT precio, thema_imagen, collecion, nombre_prod FROM product WHERE collecion = ?", [prod]
+      "SELECT precio, thema_imagen, collecion, nombre_prod FROM product WHERE collecion = ?", 
+      [prod]
     );
 
     const formattedResults = result.map(row => ({
@@ -115,12 +111,10 @@ const getcollectionProdInfo = async (req, res) => {
     const { prod, info } = req.params;
     const connection = await getConnection();
     const result = await connection.query(
-      "SELECT " +
-          "a.id_prod, a.nombre_prod, a.precio, a.cod_coleccion, a.thema_imagen, a.collecion, " +
-          "b.arte, a.tipo_prod, b.color, b.talla, b.descripcion " +
-      "FROM product a " +
-      "INNER JOIN producto_detalle b ON a.id_prod = b.id_prod " +
-      "WHERE a.collecion = ? AND a.nombre_prod = ?", [prod, info]
+      "SELECT a.id_prod, a.nombre_prod, a.precio, a.cod_coleccion, a.thema_imagen, a.collecion, " +
+      "b.arte, a.tipo_prod, b.color, b.talla, b.descripcion " +
+      "FROM product a INNER JOIN producto_detalle b ON a.id_prod = b.id_prod WHERE a.collecion = ? AND a.nombre_prod = ?", 
+      [prod, info]
     );
 
     const formattedResults = formatResults(result);
@@ -131,7 +125,7 @@ const getcollectionProdInfo = async (req, res) => {
   }
 };
 
-export const methods = {
+module.exports = {
   getProductLenguage,
   getProducts,
   getcollection,

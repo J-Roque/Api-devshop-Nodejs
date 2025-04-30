@@ -1,12 +1,15 @@
-import { Router } from "express";
-import { methods as productController } from "./../controllers/product.controller";
-const router = Router();
-router.get("/",productController.getProducts);
-router.get("/coleccion/lenguage/:lenguage",productController.getProductLenguage);
-router.get("/coleccion",productController.getcollection);
-router.get("/:coleccion/:tipo_prod",productController.getProduct);
-router.get("/coleccion/producto/:prod",productController.getcollectionProd);
-router.get("/coleccion/producto/:prod/:info",productController.getcollectionProdInfo);
+const { Router } = require("express");
+const productController = require("../controllers/product.controller"); // Importa directamente el controlador
 
-///coleccion/python/python_dark_hoodie_embroidered_colored
-export default router;
+const router = Router();
+
+// Definir las rutas
+router.get("/", productController.getProducts);
+router.get("/coleccion/lenguage/:lenguage", productController.getProductLenguage);
+router.get("/coleccion", productController.getcollection);
+router.get("/:coleccion/:tipo_prod", productController.getProduct);
+router.get("/coleccion/producto/:prod", productController.getcollectionProd);
+router.get("/coleccion/producto/:prod/:info", productController.getcollectionProdInfo);
+
+// Exportar las rutas
+module.exports = router;
