@@ -1,8 +1,8 @@
-import app from './app.js';
+// Antes usabas import; ahora use require
+const app = require("./app");  
 
-const main = () => {
-  app.listen(app.get("port"));
-  console.log(`Server on port ${app.get("port")}`);
-};
+const port = app.get("port") || 3000;
 
-main();
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
