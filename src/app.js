@@ -2,7 +2,7 @@
 const express = require('express');
 const morgan  = require('morgan');
 const cors    = require('cors');
-require('dotenv').config();    // carga .env
+require('dotenv').config();
 
 const productRoutes = require('./routes/products.routes');
 
