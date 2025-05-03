@@ -1,19 +1,29 @@
 // src/controllers/product.controller.js
 const pool = require('../database/database');
 
+// Helper para parsear JSON de forma segura
+function safeParse(value) {
+  if (typeof value !== 'string') return null;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return null;
+  }
+}
+
 const formatResults = rows =>
   rows.map(row => ({
     id_prod:       row.id_prod,
     nombre_prod:   row.nombre_prod,
     precio:        row.precio,
     cod_coleccion: row.cod_coleccion,
-    thema_imagen:  JSON.parse(row.thema_imagen),
+    thema_imagen:  safeParse(row.thema_imagen),
     collecion:     row.collecion,
-    arte:          JSON.parse(row.arte),
+    arte:          safeParse(row.arte),
     tipo_prod:     row.tipo_prod,
-    color:         JSON.parse(row.color),
-    talla:         JSON.parse(row.talla),
-    descripcion:   JSON.parse(row.descripcion),
+    color:         safeParse(row.color),
+    talla:         safeParse(row.talla),
+    descripcion:   safeParse(row.descripcion),
   }));
 
 const getProducts = async (req, res) => {
